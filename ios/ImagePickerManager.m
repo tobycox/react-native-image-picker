@@ -142,6 +142,12 @@ RCT_EXPORT_METHOD(showImagePicker:(NSDictionary *)options callback:(RCTResponseS
     }
 }
 
+RCT_EXPORT_METHOD(isCameraAvailable:(RCTResponseSenderBlock)callback)
+{
+    BOOL isAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+    self.callback(@[@{@"didCancel": [NSNumber numberWithBool:isAvailable]}]);
+}
+
 // iOS 7 Handler
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
